@@ -10,7 +10,7 @@ import {
 import { shallowEqual, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getDataForChart } from '../utils/weatherHelper';
-import { constants } from '../utils/constants';
+import { makeStyles } from '@material-ui/core/styles';
 
 function WeatherChart(props){
 
@@ -32,20 +32,31 @@ function WeatherChart(props){
     },[temp_unit,selected_index])
 
 
-
+const useStyles = makeStyles({
+    chartRoot: {
+      maxHeight: 200,
+      marginTop:'15%'
+    }
+    
+  });
+const classes = useStyles();
     return (
         <>
             <Chart
             data={chartData}
+            className={classes.chartRoot}
             >
-                <ArgumentAxis />
-                <ValueAxis max={8} showLabels={true} position="bottom" />
+                <ArgumentAxis labelComponent={(e)=>{ return (<ArgumentAxis.Label text={e.text.split('-')[1]} x={e.x} y={e.y} />); }} />
+                <ValueAxis max={8} showLabels={false} />
                 
                 <BarSeries
+                    name = "test"
                     valueField="temp"
-                    argumentField="time"    
+                    argumentField="time" 
+                    
                 />
-                <Title text={`Temperature measurement unit (${temp_unit===constants.temp_celcius?'℃':'℉'}) `} />
+                    
+                    
                 <Animation />
             </Chart>
         </>

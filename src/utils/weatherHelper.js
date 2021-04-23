@@ -18,7 +18,7 @@ export const transformWeatherData =  (data) =>{
             barChartData = dataObject.barChartData;
             tempsInADate = [];
         }
-        tempsInADate.push({temp: data[i]?.main?.temp, time:formatDate(data[i]['dt_txt'], 'LT')});
+        tempsInADate.push({temp: data[i]?.main?.temp, time:formatDate(data[i]['dt_txt'], 'HH:mm')});
         date = data[i]['dt_txt'];
     }
 
@@ -83,7 +83,7 @@ export const convertTemprature = (value, temp_unit) => {
 export const getDataForChart = (temp_data, temp_unit) => {
     let data = [];
     for(let i in temp_data){
-        data.push({temp: convertTemprature(temp_data[i]?.temp, temp_unit),time:temp_data[i]?.time});
+        data.push({temp: convertTemprature(temp_data[i]?.temp, temp_unit),time:`${temp_data[i]?.time} - ${convertTemprature(temp_data[i]?.temp, temp_unit)}${temp_unit===constants.temp_celcius?'℃':'℉'}`});
     }
     return data;
 }

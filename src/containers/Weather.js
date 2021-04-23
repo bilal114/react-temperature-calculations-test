@@ -45,7 +45,7 @@ function Weather(){
             dispatch(setPageSize(constants.mobile_page_size));
         }
 
-    },[isMobile, weatherData?.page_size])
+    },[isMobile, weatherData?.page_size,isTablet, isDesktop])
     
     // --------------------------------------------------
     // define max width of container element

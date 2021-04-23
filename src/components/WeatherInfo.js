@@ -23,7 +23,7 @@ function WeatherInfo(props){
     const [displayableIndex, setDisplayableIndex] = useState([]);
 
     const dispatch = useDispatch();
-    const {isMobile} = useDeviceDetect();
+    const {isMobile, isTablet, isDesktop} = useDeviceDetect();
     const useStyles = makeStyles({
         root: {
           maxWidth: '100vw'
@@ -44,7 +44,7 @@ function WeatherInfo(props){
 
       useEffect(()=>{
         setDisplayableIndex(getDisplayableTempIndex(selected_index, page_size, displayableIndex));
-      },[])
+      },[isMobile, isTablet, isDesktop])
 
     const handleChange = (e)=>{
         dispatch(setTempUnit(e.target.value));
@@ -73,7 +73,7 @@ function WeatherInfo(props){
                 </Box>
             </Box>
         </RadioGroup>
-        <Box display="flex" px={isMobile?1:8} py={isMobile?0:3}>
+        <Box display="flex" px={isMobile?1:8} >
 
             <Box  flexGrow={1} >
             {
