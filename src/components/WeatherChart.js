@@ -46,7 +46,7 @@ const classes = useStyles();
             data={chartData}
             className={classes.chartRoot}
             >
-                <ArgumentAxis labelComponent={(e)=>{ return (<ArgumentAxis.Label text={e.text.split('-')[1]} x={e.x} y={e.y} />); }} />
+                <ArgumentAxis labelComponent={(e)=>{ return (<ArgumentAxis.Label data-testid="graph-temp-unit" text={e.text.split('-')[1]} x={e.x} y={e.y} />); }} />
                 <ValueAxis max={8} showLabels={false} />
                 
                 <BarSeries

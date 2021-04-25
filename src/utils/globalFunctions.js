@@ -4,6 +4,11 @@ export const _checkValidStatus = data => {
     return [200, "200"].includes(data?.cod);
 }
 
+/**
+ * This method converts the object to the query, other than false values
+ * @param {object} obj 
+ * @returns 
+ */
 export const convert_obj_to_query_string = (obj) => {
     if(!isObject(obj)) return "";
   
@@ -21,12 +26,12 @@ export const convert_obj_to_query_string = (obj) => {
   }
 
 
-export const isObject = (obj) => {
-
-    if(typeof obj==='object' && typeof obj !=='function' && obj !=null) return true;
-    return false;
-  }
-
+/**
+ * Purpose of this method to check the deep equality of the object
+ * @param {object} object1 
+ * @param {object} object2 
+ * @returns 
+ */
 export const ObjectShallowEqualityCheck = (object1, object2) => {
     const keys1 = Object.keys(object1);
     const keys2 = Object.keys(object2);
@@ -43,6 +48,17 @@ export const ObjectShallowEqualityCheck = (object1, object2) => {
   
     return true;
 }
+
+/**
+ * ----------------------- Generic methods -------------------------
+ */
+
+
+export const isObject = (obj) => {
+
+    if(typeof obj==='object' && typeof obj !=='function' && obj !=null) return true;
+    return false;
+  }
 
 export const isMobile = () => {
     if(!document) return false;
@@ -65,33 +81,3 @@ const getScreenWidth = () => {
     return (document.body || document.documentElement).clientWidth
 }
 
-export const getDisplayableTempIndex = (switchedIndex, page_size, next=true, alreadyAllowedIndex=[]) => {
-    let allowedIndexes = alreadyAllowedIndex;
-    let nextAllowedIndex;
-    if(next || switchedIndex===0){
-        nextAllowedIndex = Array.from({length: page_size}, (_, i) => i + switchedIndex)
-    }
-    else
-    {
-        if(switchedIndex!=0)
-        nextAllowedIndex = Array.from({length: page_size}, (_, i) =>  switchedIndex-i)
-    }
-    if(switchedIndex===0){
-        return nextAllowedIndex;
-    }
-    if(next){
-        if((switchedIndex%page_size===0 && page_size===constants.mobile_page_size) || (switchedIndex%page_size===0 && page_size!==constants.mobile_page_size) ){
-            return nextAllowedIndex;
-        }
-    }
-    else
-    {
-        if(((switchedIndex+1)%page_size===0 && page_size===constants.mobile_page_size) || ((switchedIndex+1)%page_size===0 && page_size!==constants.mobile_page_size) ){
-            
-            return nextAllowedIndex;
-        }
-    }
-    
-
-    return allowedIndexes;
-}

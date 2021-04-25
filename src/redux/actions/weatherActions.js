@@ -3,8 +3,8 @@ import {
     getWeatherData,
     
 } from "@/redux/services/weather";
-import { _checkValidStatus } from "@/src/utils/globalFunctions"
-import { transformWeatherData } from "../../utils/weatherHelper";
+import { _checkValidStatus } from "@/utils/globalFunctions"
+import { transformWeatherData } from "@/utils/weatherHelper";
 
 export const getWeatherDataActions = (requestData) => {
     return async (dispatch) => {

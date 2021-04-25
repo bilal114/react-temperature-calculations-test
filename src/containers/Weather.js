@@ -4,11 +4,11 @@ import WeatherChart from "../components/WeatherChart";
 import WeatherInfo from "../components/WeatherInfo";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {getWeatherDataActions} from "@/redux/actions/weatherActions";
-import { convert_obj_to_query_string } from "../utils/globalFunctions";
-import { GET_WEATHER_DATA_SUCCESS } from "../redux/types";
-import { constants } from "../utils/constants";
-import useDeviceDetect from "../utils/useDeviceDetect";
-import { setPageSize } from "../redux/actions/weatherActions";
+import { convert_obj_to_query_string } from "@/utils/globalFunctions";
+import { GET_WEATHER_DATA_SUCCESS } from "@/redux/types";
+import { constants } from "@/utils/constants";
+import useDeviceDetect from "@/utils/useDeviceDetect";
+import { setPageSize } from "@/redux/actions/weatherActions";
 import Container from '@material-ui/core/Container';
 import { makeStyles } from "@material-ui/core/styles";
 function Weather(){
@@ -68,7 +68,6 @@ function Weather(){
     },[isMobile, weatherData?.page_size, isTablet, isDesktop])
     
 
-    console.log(weatherData);
     // --------------------------------------------------------------------
     // Render or load screens... 
     return (isLoaded && weatherData?.data?.cardsData)?(

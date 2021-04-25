@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "customize-cra": "^1.0.0",
+    "cypress": "^7.1.0",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-app-rewired": "^2.1.8",
@@ -33,7 +34,8 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test-cypress": "cypress open"
   },
   "eslintConfig": {
     "extends": [
